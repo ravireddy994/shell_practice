@@ -19,7 +19,7 @@ if [ $1 -eq 0 ]
 }
 dnf list installed mysql
 
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then
     echo "mysql Already installed : good to go"
     dnf install mysql -y
@@ -29,7 +29,7 @@ else
 fi
 dnf list installed python3
 
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then
     echo "python3 Already installed : good to go"
 
@@ -41,7 +41,7 @@ fi
 
 dnf list installed nginx
 
-if [ $? -ne 0 ]
+if [ $? -eq 0 ]
 then
     echo "nginx Already installed : good to go"
     dnf install nginx -y
