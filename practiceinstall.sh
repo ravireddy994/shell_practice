@@ -13,6 +13,7 @@ if [ $1 -ne 0 ]
         echo "install $1 failed"
     else
         echo "installed $2 sucess"
+        exit 1
     fi
     
 }
@@ -21,7 +22,6 @@ dnf list installed mysql
 if [ $? -eq 0 ]
 then
     echo "mysql Already installed : good to go"
-    exit 1
     dnf install mysql -y
     VALIDATE $? "mysql"
 else
@@ -32,7 +32,7 @@ dnf list installed python3
 if [ $? -eq 0 ]
 then
     echo "python3 Already installed : good to go"
-    exit 1
+
     dnf install python3 -y
     VALIDATE $? "python3"
 else
@@ -44,7 +44,6 @@ dnf list installed nginx
 if [ $? -eq 0 ]
 then
     echo "nginx Already installed : good to go"
-    exit 1
     dnf install nginx -y
     VALIDATE $? "nginx"
 else
