@@ -8,18 +8,18 @@ else
     echo "Running with root User"
 fi
 VALIDATE(){
-if [ $1 -ne 0 ]
+if [ $1 -eq 0 ]
     then
-        echo "install $2 failed"
-        exit 1
+        echo "install $2 sucess"
     else
-        echo "installed $2 sucess"
+        echo "installed $2 failed"
+        exit 1
     fi
     
 }
 dnf list installed mysql
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
     echo "mysql Already installed : good to go"
     dnf install mysql -y
@@ -29,7 +29,7 @@ else
 fi
 dnf list installed python3
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
     echo "python3 Already installed : good to go"
 
@@ -41,7 +41,7 @@ fi
 
 dnf list installed nginx
 
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
     echo "nginx Already installed : good to go"
     dnf install nginx -y
