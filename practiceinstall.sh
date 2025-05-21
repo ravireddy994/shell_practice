@@ -27,3 +27,26 @@ then
 else
     echo "my sql is not installed : goinig to install"
 fi
+dnf list installed python3
+
+if [ $? -eq 0 ]
+then
+    echo "python3 Already installed : good to go"
+    exit 1
+    dnf install python3 -y
+    VALIDATE $? "python3"
+else
+    echo "python3 is not installed : goinig to install"
+fi
+
+dnf list installed nginx
+
+if [ $? -eq 0 ]
+then
+    echo "nginx Already installed : good to go"
+    exit 1
+    dnf install nginx -y
+    VALIDATE $? "nginx"
+else
+    echo "nginx is not installed : goinig to install"
+fi
